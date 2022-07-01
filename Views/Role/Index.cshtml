@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+<br />
+
+
+<section class="flush-with-above">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="bg-white">
+                    <td>
+                        <a asp-action="Upsert" asp-controller="Role" class="btn btn-primary">Create New Role</a>
+                    </td>
+                </div>
+                <table class="table table-hover align-items-center table-borderless">
+
+                    <tbody>
+                    <tr class="table-secondary">
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="bg-white">
+                            @*<th scope="row">*@
+                            @*<div class="media align-items-center">
+                        <img alt="Image profile avatar" src="@user.ProfileImageUrl" class="avatar">
+                        <div class="media-body">
+                        <span class="h6 mb-0">@user.UserName</span>
+                        </div>
+                        </div>*@
+                            @*</th>*@
+                            @*  <td>
+                        <a class="btn btn-outline-primary" asp-controller="User" asp-action="Detail" asp-route-id="@user.Id">
+                        View Profile
+                        </a>
+                        </td>*@
+
+                            @* @{
+                        var mileage = user.Mileage == null ? "?" : user.Mileage.ToString();
+                        var pace = user.Pace == null ? "?" : user.Mileage.ToString();
+                        }
+                        <td>@mileage mile at @pace mph</td>
+                        <td><i class="icon-location"></i> @user.Location</td>*@
+                            <td>
+                                @item.Id
+                            </td>
+                            <td>
+                                @item.Name
+                            </td>
+
+                            <td>
+                                <a class="btn btn-outline-primary"  asp-action="Upsert" asp-route-id="@item.Id">
+                                    Detail
+                                </a>
+                                <a class="btn btn-outline-danger"  asp-action="Delete" asp-route-id="@item.Id">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                         <tr class="table-divider">
+                    <th></th>
+                    <td></td>
+                    </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
